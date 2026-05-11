@@ -1,7 +1,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>王熙然 · 家长会要点 & 育儿指南</title>
     <style>
         * {
@@ -16,11 +16,14 @@
             min-height: 100vh;
             padding: 20px 15px;
             color: #333;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .container {
             max-width: 680px;
             margin: 0 auto;
+            width: 100%;
         }
 
         /* 头部 */
@@ -416,6 +419,8 @@
             box-shadow: 4px 0 20px rgba(0,0,0,0.15);
             backdrop-filter: blur(10px);
             transition: all 0.3s;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .sidebar-nav.collapsed {
@@ -512,35 +517,174 @@
         .sidebar-item.family .dot { background: #38b2ac; }
         .sidebar-item.family.active { background: #b2f5ea; }
 
-        /* 手机端侧边栏适配 */
+        /* ========== 手机端全面适配 ========== */
         @media (max-width: 768px) {
-            .sidebar-nav {
-                top: auto;
-                bottom: 20px;
-                left: 10px;
-                transform: none;
-                border-radius: 16px;
-                padding: 8px;
-                max-height: 60vh;
-                overflow-y: auto;
+            body {
+                padding: 10px 8px 80px 8px;
             }
-            .sidebar-nav.expanded {
-                width: 160px;
-            }
+
             .container {
-                padding-left: 50px;
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .header .subtitle {
+                font-size: 13px;
+            }
+
+            .header .date-badge {
+                font-size: 11px;
+                padding: 3px 10px;
+            }
+
+            .nav-tabs {
+                gap: 6px;
+            }
+
+            .nav-tab {
+                min-width: 80px;
+                padding: 10px 6px;
+                font-size: 13px;
+            }
+
+            .nav-tab .emoji {
+                font-size: 18px;
+            }
+
+            .card-header {
+                padding: 12px 14px;
+            }
+
+            .card-title {
+                font-size: 15px;
+            }
+
+            .card-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 18px;
+            }
+
+            .item-content {
+                font-size: 14px;
+            }
+
+            .steps {
+                padding: 10px;
+            }
+
+            .step-text {
+                font-size: 13px;
+            }
+
+            .footer-actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .btn {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            /* 侧边栏改为底部浮动 */
+            .sidebar-nav {
+                position: fixed;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                transform: none;
+                border-radius: 16px 16px 0 0;
+                padding: 8px 12px;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 4px;
+                max-height: none;
+                overflow-y: visible;
+                background: rgba(255,255,255,0.98);
+                box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            }
+
+            .sidebar-nav.expanded,
+            .sidebar-nav.collapsed {
+                width: 100%;
+            }
+
+            .sidebar-toggle {
+                display: none;
+            }
+
+            .sidebar-group-title {
+                display: none;
+            }
+
+            .sidebar-item {
+                padding: 6px 10px;
+                font-size: 12px;
+                border-radius: 8px;
+            }
+
+            .sidebar-item .dot {
+                width: 6px;
+                height: 6px;
+            }
+
+            /* 底部留白，防止被侧边栏遮挡 */
+            .container {
+                padding-bottom: 70px;
             }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding-left: 45px;
-            }
             body {
-                padding: 20px 10px 20px 5px;
+                padding: 8px 6px 80px 6px;
+            }
+
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .nav-tab {
+                min-width: 70px;
+                padding: 8px 4px;
+                font-size: 12px;
+            }
+
+            .card-title {
+                font-size: 14px;
+            }
+
+            .item-content {
+                font-size: 13px;
+            }
+
+            .highlight-box {
+                font-size: 13px;
+                padding: 10px 12px;
+            }
+
+            .sidebar-item {
+                padding: 5px 8px;
+                font-size: 11px;
             }
         }
 
+        /* 防止横向溢出 */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
