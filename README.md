@@ -609,6 +609,7 @@
                 overflow-y: visible;
                 background: rgba(255,255,255,0.98);
                 box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+                transition: transform 0.3s ease;
             }
 
             .sidebar-nav.expanded,
@@ -616,8 +617,46 @@
                 width: 100%;
             }
 
+            /* 手机端收起状态 */
+            .sidebar-nav.mobile-collapsed {
+                transform: translateY(calc(100% - 36px));
+            }
+
+            .sidebar-nav.mobile-collapsed .sidebar-item,
+            .sidebar-nav.mobile-collapsed .sidebar-group-title {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            /* 手机端收起按钮 */
             .sidebar-toggle {
-                display: none;
+                display: flex !important;
+                position: absolute;
+                top: -18px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: #667eea;
+                color: white;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                border: 3px solid white;
+                box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+                z-index: 101;
+                cursor: pointer;
+            }
+
+            .sidebar-toggle .toggle-icon {
+                transition: transform 0.3s;
+                display: inline-block;
+                font-weight: bold;
+            }
+
+            .sidebar-nav.mobile-collapsed .sidebar-toggle .toggle-icon {
+                transform: rotate(180deg);
             }
 
             .sidebar-group-title {
@@ -628,6 +667,7 @@
                 padding: 6px 10px;
                 font-size: 12px;
                 border-radius: 8px;
+                transition: opacity 0.2s;
             }
 
             .sidebar-item .dot {
@@ -638,6 +678,11 @@
             /* 底部留白，防止被侧边栏遮挡 */
             .container {
                 padding-bottom: 70px;
+            }
+
+            /* 收起时减少底部留白 */
+            .container.mobile-nav-collapsed {
+                padding-bottom: 20px;
             }
         }
 
@@ -691,7 +736,9 @@
 
     <!-- 侧边浮动导航 -->
     <div class="sidebar-nav expanded" id="sidebarNav">
-        <button class="sidebar-toggle" onclick="toggleSidebar()" title="收起/展开">☰</button>
+        <button class="sidebar-toggle" onclick="toggleSidebar()" title="收起/展开">
+            <span class="toggle-icon">☰</span>
+        </button>
 
         <div class="sidebar-group-title">📚 学科</div>
         <button class="sidebar-item chinese" onclick="jumpToSection('subjects', 'card-chinese')">
@@ -1328,8 +1375,21 @@
         // 收起/展开侧边栏
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebarNav');
-            sidebar.classList.toggle('collapsed');
-            sidebar.classList.toggle('expanded');
+            const container = document.querySelector('.container');
+
+            // 检测是否为手机端（通过窗口宽度）
+            if (window.innerWidth <= 768) {
+                // 手机端：切换 mobile-collapsed 类
+                sidebar.classList.toggle('mobile-collapsed');
+                container.classList.toggle('mobile-nav-collapsed');
+
+                // 横线图标旋转180度表示收起/展开状态
+                // 不需要修改图标内容，通过CSS旋转即可
+            } else {
+                // 桌面端：保持原有逻辑
+                sidebar.classList.toggle('collapsed');
+                sidebar.classList.toggle('expanded');
+            }
         }
 
         // 滚动时更新侧边栏高亮
@@ -1550,6 +1610,13 @@
             document.querySelectorAll('.content-section.active .card').forEach((card, i) => {
                 if (i === 0) card.classList.add('expanded');
             });
+
+            // 手机端默认展开导航栏
+            const sidebar = document.getElementById('sidebarNav');
+            if (window.innerWidth <= 768 && sidebar) {
+                // 确保手机端初始状态是展开的
+                sidebar.classList.remove('mobile-collapsed');
+            }
         });
     </script>
 </body>
