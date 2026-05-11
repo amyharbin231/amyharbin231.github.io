@@ -772,6 +772,61 @@
             max-width: 100%;
             height: auto;
         }
+
+        /* 图片弹窗 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal img {
+            max-width: 100%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .image-modal-title {
+            color: white;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-align: center;
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
@@ -1049,22 +1104,22 @@
 
                     <div class="sub-title">📌 体能测试项目（杭州市小学女生标准）</div>
                     <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
-                        <a href="一年级.jpg" target="_blank" style="text-decoration:none;">
+                        <a href="一年级.jpg" onclick="openImageModal(this.href);return false;" style="text-decoration:none;">
                             <span style="display:inline-block;padding:6px 14px;background:#fed7d7;color:#c53030;border-radius:10px;font-size:13px;font-weight:600;">🖼️ 一年级标准</span>
                         </a>
-                        <a href="二年级.jpg" target="_blank" style="text-decoration:none;">
+                        <a href="二年级.jpg" onclick="openImageModal(this.href);return false;" style="text-decoration:none;">
                             <span style="display:inline-block;padding:6px 14px;background:#fed7d7;color:#c53030;border-radius:10px;font-size:13px;font-weight:600;">🖼️ 二年级标准</span>
                         </a>
-                        <a href="三年级.jpg" target="_blank" style="text-decoration:none;">
+                        <a href="三年级.jpg" onclick="openImageModal(this.href);return false;" style="text-decoration:none;">
                             <span style="display:inline-block;padding:6px 14px;background:#fed7d7;color:#c53030;border-radius:10px;font-size:13px;font-weight:600;">🖼️ 三年级标准</span>
                         </a>
-                        <a href="四年级.jpg" target="_blank" style="text-decoration:none;">
+                        <a href="四年级.jpg" onclick="openImageModal(this.href);return false;" style="text-decoration:none;">
                             <span style="display:inline-block;padding:6px 14px;background:#fed7d7;color:#c53030;border-radius:10px;font-size:13px;font-weight:600;">🖼️ 四年级标准</span>
                         </a>
-                        <a href="五年级.jpg" target="_blank" style="text-decoration:none;">
+                        <a href="五年级.jpg" onclick="openImageModal(this.href);return false;" style="text-decoration:none;">
                             <span style="display:inline-block;padding:6px 14px;background:#fed7d7;color:#c53030;border-radius:10px;font-size:13px;font-weight:600;">🖼️ 五年级标准</span>
                         </a>
-                        <a href="六年级.jpg" target="_blank" style="text-decoration:none;">
+                        <a href="六年级.jpg" onclick="openImageModal(this.href);return false;" style="text-decoration:none;">
                             <span style="display:inline-block;padding:6px 14px;background:#fed7d7;color:#c53030;border-radius:10px;font-size:13px;font-weight:600;">🖼️ 六年级标准</span>
                         </a>
                     </div>
@@ -1339,7 +1394,31 @@
     <!-- 提示 toast -->
     <div class="toast" id="toast"></div>
 
+    <!-- 图片弹窗 -->
+    <div class="image-modal" id="imageModal" onclick="closeImageModal(event)">
+        <button class="image-modal-close" onclick="closeImageModal(event)">✕</button>
+        <div class="image-modal-title" id="imageModalTitle">点击任意位置关闭</div>
+        <img src="" alt="体测标准" id="imageModalImg">
+    </div>
+
     <script>
+        // 图片弹窗功能
+        function openImageModal(src) {
+            const modal = document.getElementById('imageModal');
+            const img = document.getElementById('imageModalImg');
+            img.src = src;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal(event) {
+            if (event.target.id === 'imageModal' || event.target.classList.contains('image-modal-close')) {
+                const modal = document.getElementById('imageModal');
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
         // 防止滚动监听覆盖点击高亮的标志
         let isClickJumping = false;
         let clickJumpTimer = null;
