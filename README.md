@@ -438,15 +438,40 @@
             height: 32px;
             border-radius: 50%;
             background: #667eea;
-            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
             cursor: pointer;
             margin: 0 auto 6px;
             border: none;
             flex-shrink: 0;
+            padding: 0;
+            flex-direction: column;
+            gap: 2.5px;
+        }
+
+        .sidebar-toggle .hamburger-line {
+            display: block;
+            width: 14px;
+            height: 2px;
+            background: white;
+            border-radius: 1px;
+            transition: all 0.3s;
+        }
+
+        .sidebar-nav.collapsed .sidebar-toggle .hamburger-line:nth-child(1) {
+            transform: translateY(4.5px) rotate(45deg);
+            width: 12px;
+        }
+
+        .sidebar-nav.collapsed .sidebar-toggle .hamburger-line:nth-child(2) {
+            opacity: 0;
+            width: 0;
+        }
+
+        .sidebar-nav.collapsed .sidebar-toggle .hamburger-line:nth-child(3) {
+            transform: translateY(-4.5px) rotate(-45deg);
+            width: 12px;
         }
 
         .sidebar-group-title {
@@ -639,24 +664,41 @@
                 height: 36px;
                 border-radius: 50%;
                 background: #667eea;
-                color: white;
-                align-items: center;
-                justify-content: center;
-                font-size: 16px;
                 border: 3px solid white;
                 box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
                 z-index: 101;
                 cursor: pointer;
+                padding: 0;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3px;
             }
 
-            .sidebar-toggle .toggle-icon {
-                transition: transform 0.3s;
-                display: inline-block;
-                font-weight: bold;
+            /* CSS绘制三条横线 */
+            .sidebar-toggle .hamburger-line {
+                display: block;
+                width: 16px;
+                height: 2px;
+                background: white;
+                border-radius: 1px;
+                transition: all 0.3s;
             }
 
-            .sidebar-nav.mobile-collapsed .sidebar-toggle .toggle-icon {
-                transform: rotate(180deg);
+            /* 收起状态：中间线变短，上下线旋转成X */
+            .sidebar-nav.mobile-collapsed .sidebar-toggle .hamburger-line:nth-child(1) {
+                transform: translateY(5px) rotate(45deg);
+                width: 14px;
+            }
+
+            .sidebar-nav.mobile-collapsed .sidebar-toggle .hamburger-line:nth-child(2) {
+                opacity: 0;
+                width: 0;
+            }
+
+            .sidebar-nav.mobile-collapsed .sidebar-toggle .hamburger-line:nth-child(3) {
+                transform: translateY(-5px) rotate(-45deg);
+                width: 14px;
             }
 
             .sidebar-group-title {
@@ -737,7 +779,9 @@
     <!-- 侧边浮动导航 -->
     <div class="sidebar-nav expanded" id="sidebarNav">
         <button class="sidebar-toggle" onclick="toggleSidebar()" title="收起/展开">
-            <span class="toggle-icon">☰</span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
         </button>
 
         <div class="sidebar-group-title">📚 学科</div>
@@ -1382,11 +1426,8 @@
                 // 手机端：切换 mobile-collapsed 类
                 sidebar.classList.toggle('mobile-collapsed');
                 container.classList.toggle('mobile-nav-collapsed');
-
-                // 横线图标旋转180度表示收起/展开状态
-                // 不需要修改图标内容，通过CSS旋转即可
             } else {
-                // 桌面端：保持原有逻辑
+                // 桌面端：切换 collapsed/expanded
                 sidebar.classList.toggle('collapsed');
                 sidebar.classList.toggle('expanded');
             }
