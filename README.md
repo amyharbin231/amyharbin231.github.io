@@ -1,6 +1,3 @@
-[王熙然_家长会要点.html](https://github.com/user-attachments/files/27579567/_.html)
-# amyharbin231.github.io
-<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
