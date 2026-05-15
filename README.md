@@ -4,136 +4,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>王熙然 · 家长会要点 & 育儿指南</title>
     <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #818cf8;
+            --chinese: #ef4444;
+            --math: #3b82f6;
+            --sports: #10b981;
+            --habit: #8b5cf6;
+            --growth: #f59e0b;
+            --family: #14b8a6;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px 15px;
-            color: #333;
-            -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: transparent;
         }
 
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            width: 100%;
+        body {
+            font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-text-size-adjust: 100%;
         }
 
         /* 头部 */
         .header {
-            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            margin-bottom: 24px;
+            padding: 32px 20px;
+            text-align: center;
         }
 
         .header h1 {
-            font-size: 26px;
+            font-size: 24px;
+            font-weight: 800;
             margin-bottom: 6px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .header .subtitle {
-            font-size: 15px;
+            font-size: 14px;
             opacity: 0.9;
+            margin-bottom: 8px;
         }
 
         .header .date-badge {
             display: inline-block;
             background: rgba(255,255,255,0.2);
-            padding: 4px 16px;
+            padding: 4px 14px;
             border-radius: 20px;
-            font-size: 13px;
-            margin-top: 8px;
-            backdrop-filter: blur(10px);
+            font-size: 12px;
         }
 
-        /* 导航标签 */
+        /* 导航 */
         .nav-tabs {
             display: flex;
             gap: 8px;
-            margin-bottom: 20px;
-            overflow-x: auto;
-            padding-bottom: 4px;
+            padding: 16px;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: var(--shadow);
         }
 
         .nav-tab {
             flex: 1;
-            min-width: 100px;
-            padding: 12px 8px;
-            background: rgba(255,255,255,0.15);
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 12px;
-            color: white;
-            font-size: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            text-align: center;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
+            transition: all 0.2s;
+            border: 2px solid var(--border);
+            color: var(--text-secondary);
+            background: white;
         }
 
         .nav-tab.active {
-            background: white;
-            color: #667eea;
-            border-color: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(79,70,229,0.3);
         }
 
         .nav-tab .emoji {
-            font-size: 20px;
             display: block;
+            font-size: 20px;
             margin-bottom: 2px;
         }
 
-        /* 内容区域 */
+        /* 内容区 */
         .content-section {
             display: none;
+            padding: 0 16px 100px;
         }
 
         .content-section.active {
             display: block;
-            animation: fadeIn 0.4s ease;
+            animation: fadeIn 0.3s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* 卡片 */
         .card {
-            background: white;
+            background: var(--card-bg);
             border-radius: 16px;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
         }
 
         .card-header {
-            padding: 16px 18px;
+            padding: 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
-            transition: background 0.2s;
             user-select: none;
+            transition: background 0.2s;
         }
 
         .card-header:hover {
-            background: #f8f9ff;
+            background: #f8fafc;
         }
 
         .card-header-left {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .card-icon {
@@ -149,19 +163,18 @@
         .card-title {
             font-size: 17px;
             font-weight: 700;
-            color: #2d3748;
         }
 
         .card-badge {
             font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 10px;
+            padding: 3px 10px;
+            border-radius: 20px;
             font-weight: 600;
         }
 
         .card-toggle {
-            font-size: 20px;
-            color: #a0aec0;
+            font-size: 18px;
+            color: var(--text-secondary);
             transition: transform 0.3s;
         }
 
@@ -176,14 +189,14 @@
         }
 
         .card.expanded .card-body {
-            max-height: 2000px;
-            padding: 0 18px 18px 18px;
+            max-height: 3000px;
+            padding: 0 16px 16px;
         }
 
         /* 列表项 */
         .item {
-            padding: 12px 0;
-            border-bottom: 1px solid #edf2f7;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border);
             display: flex;
             gap: 10px;
             align-items: flex-start;
@@ -194,47 +207,51 @@
         }
 
         .item-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
-            margin-top: 6px;
+            margin-top: 8px;
             flex-shrink: 0;
         }
 
         .item-content {
             flex: 1;
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.7;
-            color: #4a5568;
+            color: var(--text);
         }
 
-        /* 重点标注 */
+        /* 重点框 */
         .highlight-box {
-            background: #fff5f5;
-            border-left: 4px solid #fc8181;
+            border-radius: 10px;
             padding: 12px 14px;
-            border-radius: 0 10px 10px 0;
-            margin: 8px 0;
+            margin: 10px 0;
             font-size: 14px;
-            color: #c53030;
+            line-height: 1.6;
+        }
+
+        .highlight-box.red {
+            background: #fef2f2;
+            border-left: 3px solid var(--chinese);
+            color: #991b1b;
         }
 
         .highlight-box.yellow {
-            background: #fffff0;
-            border-left-color: #f6e05e;
-            color: #744210;
+            background: #fefce8;
+            border-left: 3px solid #eab308;
+            color: #854d0e;
         }
 
         .highlight-box.blue {
-            background: #ebf8ff;
-            border-left-color: #63b3ed;
-            color: #2b6cb0;
+            background: #eff6ff;
+            border-left: 3px solid var(--math);
+            color: #1e40af;
         }
 
         .highlight-box.green {
-            background: #f0fff4;
-            border-left-color: #68d391;
-            color: #276749;
+            background: #f0fdf4;
+            border-left: 3px solid var(--sports);
+            color: #166534;
         }
 
         /* 标签 */
@@ -242,29 +259,28 @@
             display: inline-block;
             padding: 2px 8px;
             border-radius: 6px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             margin-right: 4px;
         }
 
-        .tag-red { background: #fed7d7; color: #c53030; }
-        .tag-yellow { background: #fefcbf; color: #975a16; }
-        .tag-blue { background: #bee3f8; color: #2b6cb0; }
-        .tag-green { background: #c6f6d5; color: #276749; }
-        .tag-purple { background: #e9d8fd; color: #6b46c1; }
+        .tag-red { background: #fee2e2; color: #991b1b; }
+        .tag-yellow { background: #fef9c3; color: #854d0e; }
+        .tag-blue { background: #dbeafe; color: #1e40af; }
+        .tag-green { background: #dcfce7; color: #166534; }
 
         /* 步骤 */
         .steps {
-            background: #f7fafc;
+            background: #f8fafc;
             border-radius: 10px;
-            padding: 14px;
+            padding: 12px;
             margin: 8px 0;
         }
 
         .step {
             display: flex;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             align-items: flex-start;
         }
 
@@ -273,24 +289,54 @@
         }
 
         .step-num {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
-            background: #667eea;
+            background: var(--primary);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             flex-shrink: 0;
         }
 
         .step-text {
-            font-size: 14px;
-            color: #4a5568;
+            font-size: 13px;
             line-height: 1.6;
             padding-top: 2px;
+        }
+
+        /* 小标题 */
+        .sub-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text);
+            margin: 14px 0 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 年级按钮 */
+        .grade-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0;
+        }
+
+        .grade-btn {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #fee2e2;
+            color: #991b1b;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
         }
 
         /* 底部按钮 */
@@ -298,7 +344,7 @@
             display: flex;
             gap: 10px;
             margin-top: 20px;
-            margin-bottom: 30px;
+            padding: 0 16px;
         }
 
         .btn {
@@ -306,7 +352,7 @@
             padding: 14px;
             border-radius: 12px;
             border: none;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
@@ -317,9 +363,9 @@
         }
 
         .btn-primary {
-            background: white;
-            color: #667eea;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(79,70,229,0.3);
         }
 
         .btn-primary:active {
@@ -327,12 +373,12 @@
         }
 
         .btn-secondary {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.4);
+            background: white;
+            color: var(--text);
+            border: 2px solid var(--border);
         }
 
-        /* 复制提示 */
+        /* Toast */
         .toast {
             position: fixed;
             top: 50%;
@@ -342,7 +388,7 @@
             color: white;
             padding: 14px 28px;
             border-radius: 12px;
-            font-size: 15px;
+            font-size: 14px;
             z-index: 1000;
             opacity: 0;
             pointer-events: none;
@@ -353,426 +399,6 @@
             opacity: 1;
         }
 
-        /* 分隔线 */
-        .divider {
-            height: 1px;
-            background: #e2e8f0;
-            margin: 12px 0;
-        }
-
-        /* 小标题 */
-        .sub-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: #2d3748;
-            margin: 14px 0 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* 响应式 */
-        @media (max-width: 480px) {
-            .header h1 { font-size: 22px; }
-            .card-title { font-size: 16px; }
-            .item-content { font-size: 14px; }
-        }
-
-        /* 颜色主题 */
-        .theme-chinese .card-header { background: #fff5f5; }
-        .theme-chinese .card-icon { background: #fed7d7; }
-        .theme-chinese .item-dot { background: #fc8181; }
-
-        .theme-math .card-header { background: #ebf8ff; }
-        .theme-math .card-icon { background: #bee3f8; }
-        .theme-math .item-dot { background: #63b3ed; }
-
-        .theme-sports .card-header { background: #f0fff4; }
-        .theme-sports .card-icon { background: #c6f6d5; }
-        .theme-sports .item-dot { background: #68d391; }
-
-        .theme-growth .card-header { background: #fffaf0; }
-        .theme-growth .card-icon { background: #feebc8; }
-        .theme-growth .item-dot { background: #ed8936; }
-
-        .theme-habit .card-header { background: #f3e8ff; }
-        .theme-habit .card-icon { background: #e9d8fd; }
-        .theme-habit .item-dot { background: #9f7aea; }
-
-        .theme-family .card-header { background: #e6fffa; }
-        .theme-family .card-icon { background: #b2f5ea; }
-        .theme-family .item-dot { background: #38b2ac; }
-
-        /* 侧边浮动导航 */
-        .sidebar-nav {
-            position: fixed;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            padding: 10px 6px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 0 16px 16px 0;
-            box-shadow: 4px 0 20px rgba(0,0,0,0.15);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .sidebar-nav.collapsed {
-            width: 44px;
-            overflow: hidden;
-        }
-
-        .sidebar-nav.expanded {
-            width: auto;
-            min-width: 120px;
-        }
-
-        .sidebar-toggle {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #667eea;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            margin: 0 auto 6px;
-            border: none;
-            flex-shrink: 0;
-            padding: 0;
-            flex-direction: column;
-            gap: 2.5px;
-        }
-
-        .sidebar-toggle .hamburger-line {
-            display: block;
-            width: 14px;
-            height: 2px;
-            background: white;
-            border-radius: 1px;
-            transition: all 0.3s;
-        }
-
-        .sidebar-nav.collapsed .sidebar-toggle .hamburger-line:nth-child(1) {
-            transform: translateY(4.5px) rotate(45deg);
-            width: 12px;
-        }
-
-        .sidebar-nav.collapsed .sidebar-toggle .hamburger-line:nth-child(2) {
-            opacity: 0;
-            width: 0;
-        }
-
-        .sidebar-nav.collapsed .sidebar-toggle .hamburger-line:nth-child(3) {
-            transform: translateY(-4.5px) rotate(-45deg);
-            width: 12px;
-        }
-
-        .sidebar-group-title {
-            font-size: 11px;
-            font-weight: 700;
-            color: #a0aec0;
-            padding: 4px 8px;
-            white-space: nowrap;
-            letter-spacing: 1px;
-        }
-
-        .sidebar-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 10px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            white-space: nowrap;
-            font-size: 13px;
-            font-weight: 600;
-            border: none;
-            background: transparent;
-            width: 100%;
-            text-align: left;
-        }
-
-        .sidebar-item:hover {
-            transform: translateX(4px);
-        }
-
-        .sidebar-item .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .sidebar-item.chinese { color: #c53030; }
-        .sidebar-item.chinese:hover { background: #fff5f5; }
-        .sidebar-item.chinese .dot { background: #fc8181; }
-        .sidebar-item.chinese.active { background: #fed7d7; }
-
-        .sidebar-item.math { color: #2b6cb0; }
-        .sidebar-item.math:hover { background: #ebf8ff; }
-        .sidebar-item.math .dot { background: #63b3ed; }
-        .sidebar-item.math.active { background: #bee3f8; }
-
-        .sidebar-item.sports { color: #276749; }
-        .sidebar-item.sports:hover { background: #f0fff4; }
-        .sidebar-item.sports .dot { background: #68d391; }
-        .sidebar-item.sports.active { background: #c6f6d5; }
-
-        .sidebar-item.habit { color: #6b46c1; }
-        .sidebar-item.habit:hover { background: #faf5ff; }
-        .sidebar-item.habit .dot { background: #9f7aea; }
-        .sidebar-item.habit.active { background: #e9d8fd; }
-
-        .sidebar-item.growth { color: #975a16; }
-        .sidebar-item.growth:hover { background: #fffaf0; }
-        .sidebar-item.growth .dot { background: #ed8936; }
-        .sidebar-item.growth.active { background: #feebc8; }
-
-        .sidebar-item.family { color: #276749; }
-        .sidebar-item.family:hover { background: #e6fffa; }
-        .sidebar-item.family .dot { background: #38b2ac; }
-        .sidebar-item.family.active { background: #b2f5ea; }
-
-        /* ========== 手机端全面适配 ========== */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px 8px 80px 8px;
-            }
-
-            .container {
-                max-width: 100%;
-                padding: 0;
-            }
-
-            .header h1 {
-                font-size: 20px;
-            }
-
-            .header .subtitle {
-                font-size: 13px;
-            }
-
-            .header .date-badge {
-                font-size: 11px;
-                padding: 3px 10px;
-            }
-
-            .nav-tabs {
-                gap: 6px;
-            }
-
-            .nav-tab {
-                min-width: 80px;
-                padding: 10px 6px;
-                font-size: 13px;
-            }
-
-            .nav-tab .emoji {
-                font-size: 18px;
-            }
-
-            .card-header {
-                padding: 12px 14px;
-            }
-
-            .card-title {
-                font-size: 15px;
-            }
-
-            .card-icon {
-                width: 34px;
-                height: 34px;
-                font-size: 18px;
-            }
-
-            .item-content {
-                font-size: 14px;
-            }
-
-            .steps {
-                padding: 10px;
-            }
-
-            .step-text {
-                font-size: 13px;
-            }
-
-            .footer-actions {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .btn {
-                padding: 12px;
-                font-size: 14px;
-            }
-
-            /* 侧边栏改为底部浮动 */
-            .sidebar-nav {
-                position: fixed;
-                top: auto;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                transform: none;
-                border-radius: 16px 16px 0 0;
-                padding: 8px 12px;
-                flex-direction: row;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 4px;
-                max-height: none;
-                overflow-y: visible;
-                background: rgba(255,255,255,0.98);
-                box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
-                transition: transform 0.3s ease;
-            }
-
-            .sidebar-nav.expanded,
-            .sidebar-nav.collapsed {
-                width: 100%;
-            }
-
-            /* 手机端收起状态 */
-            .sidebar-nav.mobile-collapsed {
-                transform: translateY(calc(100% - 36px));
-            }
-
-            .sidebar-nav.mobile-collapsed .sidebar-item,
-            .sidebar-nav.mobile-collapsed .sidebar-group-title {
-                opacity: 0;
-                pointer-events: none;
-            }
-
-            /* 手机端收起按钮 */
-            .sidebar-toggle {
-                display: flex !important;
-                position: absolute;
-                top: -18px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 36px;
-                height: 36px;
-                border-radius: 50%;
-                background: #667eea;
-                border: 3px solid white;
-                box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-                z-index: 101;
-                cursor: pointer;
-                padding: 0;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 3px;
-            }
-
-            /* CSS绘制三条横线 */
-            .sidebar-toggle .hamburger-line {
-                display: block;
-                width: 16px;
-                height: 2px;
-                background: white;
-                border-radius: 1px;
-                transition: all 0.3s;
-            }
-
-            /* 收起状态：中间线变短，上下线旋转成X */
-            .sidebar-nav.mobile-collapsed .sidebar-toggle .hamburger-line:nth-child(1) {
-                transform: translateY(5px) rotate(45deg);
-                width: 14px;
-            }
-
-            .sidebar-nav.mobile-collapsed .sidebar-toggle .hamburger-line:nth-child(2) {
-                opacity: 0;
-                width: 0;
-            }
-
-            .sidebar-nav.mobile-collapsed .sidebar-toggle .hamburger-line:nth-child(3) {
-                transform: translateY(-5px) rotate(-45deg);
-                width: 14px;
-            }
-
-            .sidebar-group-title {
-                display: none;
-            }
-
-            .sidebar-item {
-                padding: 6px 10px;
-                font-size: 12px;
-                border-radius: 8px;
-                transition: opacity 0.2s;
-            }
-
-            .sidebar-item .dot {
-                width: 6px;
-                height: 6px;
-            }
-
-            /* 底部留白，防止被侧边栏遮挡 */
-            .container {
-                padding-bottom: 70px;
-            }
-
-            /* 收起时减少底部留白 */
-            .container.mobile-nav-collapsed {
-                padding-bottom: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 8px 6px 80px 6px;
-            }
-
-            .header h1 {
-                font-size: 18px;
-            }
-
-            .nav-tab {
-                min-width: 70px;
-                padding: 8px 4px;
-                font-size: 12px;
-            }
-
-            .card-title {
-                font-size: 14px;
-            }
-
-            .item-content {
-                font-size: 13px;
-            }
-
-            .highlight-box {
-                font-size: 13px;
-                padding: 10px 12px;
-            }
-
-            .sidebar-item {
-                padding: 5px 8px;
-                font-size: 11px;
-            }
-        }
-
-        /* 防止横向溢出 */
-        html, body {
-            overflow-x: hidden;
-            max-width: 100vw;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
         /* 图片弹窗 */
         .image-modal {
             display: none;
@@ -781,7 +407,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.92);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -817,94 +443,164 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(10px);
         }
 
         .image-modal-title {
             color: white;
-            font-size: 14px;
+            font-size: 13px;
             margin-bottom: 10px;
-            text-align: center;
-            opacity: 0.8;
+            opacity: 0.7;
         }
+
+        /* 侧边导航 */
+        .sidebar-nav {
+            position: fixed;
+            right: 16px;
+            bottom: 100px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .menu-fab {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .menu-fab.active {
+            transform: rotate(45deg);
+        }
+
+        .menu-items {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .menu-items.show {
+            display: flex;
+            animation: popUp 0.3s ease;
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .menu-item {
+            background: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 主题色 */
+        .theme-chinese .card-header { border-left: 4px solid var(--chinese); }
+        .theme-chinese .card-icon { background: #fee2e2; }
+        .theme-chinese .item-dot { background: var(--chinese); }
+
+        .theme-math .card-header { border-left: 4px solid var(--math); }
+        .theme-math .card-icon { background: #dbeafe; }
+        .theme-math .item-dot { background: var(--math); }
+
+        .theme-sports .card-header { border-left: 4px solid var(--sports); }
+        .theme-sports .card-icon { background: #dcfce7; }
+        .theme-sports .item-dot { background: var(--sports); }
+
+        .theme-habit .card-header { border-left: 4px solid var(--habit); }
+        .theme-habit .card-icon { background: #ede9fe; }
+        .theme-habit .item-dot { background: var(--habit); }
+
+        .theme-growth .card-header { border-left: 4px solid var(--growth); }
+        .theme-growth .card-icon { background: #fef3c7; }
+        .theme-growth .item-dot { background: var(--growth); }
+
+        .theme-family .card-header { border-left: 4px solid var(--family); }
+        .theme-family .card-icon { background: #ccfbf1; }
+        .theme-family .item-dot { background: var(--family); }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            .header h1 { font-size: 20px; }
+            .header { padding: 24px 16px; }
+            .nav-tab { font-size: 12px; padding: 8px 4px; }
+            .card-title { font-size: 15px; }
+            .item-content { font-size: 13px; }
+            .sidebar-nav { right: 12px; bottom: 80px; }
+            .menu-fab { width: 48px; height: 48px; }
+        }
+
+        /* 防止溢出 */
+        html, body { overflow-x: hidden; }
+        img { max-width: 100%; height: auto; }
     </style>
+<base target="_blank">
 </head>
 <body>
 
-    <!-- 侧边浮动导航 -->
-    <div class="sidebar-nav expanded" id="sidebarNav">
-        <button class="sidebar-toggle" onclick="toggleSidebar()" title="收起/展开">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </button>
-
-        <div class="sidebar-group-title">📚 学科</div>
-        <button class="sidebar-item chinese" onclick="jumpToSection('subjects', 'card-chinese')">
-            <span class="dot"></span>📖 语文
-        </button>
-        <button class="sidebar-item math" onclick="jumpToSection('subjects', 'card-math')">
-            <span class="dot"></span>🔢 数学
-        </button>
-        <button class="sidebar-item sports" onclick="jumpToSection('subjects', 'card-sports')">
-            <span class="dot"></span>🏃 体育
-        </button>
-
-        <div style="height:1px;background:#e2e8f0;margin:8px 0;"></div>
-
-        <div class="sidebar-group-title">🏠 育儿</div>
-        <button class="sidebar-item habit" onclick="jumpToSection('parenting', 'card-habit')">
-            <span class="dot"></span>🎯 习惯
-        </button>
-        <button class="sidebar-item growth" onclick="jumpToSection('parenting', 'card-growth')">
-            <span class="dot"></span>🌱 能力
-        </button>
-        <button class="sidebar-item family" onclick="jumpToSection('parenting', 'card-family')">
-            <span class="dot"></span>💑 家庭
-        </button>
+    <!-- 头部 -->
+    <div class="header">
+        <h1>📋 王熙然 · 家长会要点</h1>
+        <div class="subtitle">一年级下学期 · 家校共育指南</div>
+        <div class="date-badge">📅 2026年5月 更新 · 创建于 2025年10月育儿课</div>
     </div>
-    <div class="container">
-        <!-- 头部 -->
-        <div class="header">
-            <h1>📋 王熙然 · 家长会要点</h1>
-            <div class="subtitle">一年级下学期 · 家校共育指南</div>
-            <div class="date-badge">📅 2026年5月 更新 · 创建于 2025年10月育儿课</div>
+
+    <!-- 导航 -->
+    <div class="nav-tabs">
+        <div class="nav-tab active" onclick="switchTab('subjects')">
+            <span class="emoji">📚</span>
+            学科要点
         </div>
-
-        <!-- 导航 -->
-        <div class="nav-tabs">
-            <div class="nav-tab active" onclick="switchTab('subjects')">
-                <span class="emoji">📚</span>
-                学科要点
-            </div>
-            <div class="nav-tab" onclick="switchTab('parenting')">
-                <span class="emoji">🏠</span>
-                育儿指南
-            </div>
-            <div class="nav-tab" onclick="switchTab('all')">
-                <span class="emoji">📋</span>
-                全部内容
-            </div>
+        <div class="nav-tab" onclick="switchTab('parenting')">
+            <span class="emoji">🏠</span>
+            育儿指南
         </div>
+        <div class="nav-tab" onclick="switchTab('all')">
+            <span class="emoji">📋</span>
+            全部内容
+        </div>
+    </div>
 
-        <!-- 学科要点 -->
-        <div id="subjects" class="content-section active">
+    <!-- 学科要点 -->
+    <div id="subjects" class="content-section active">
 
-            <!-- 语文 -->
-            <div class="card theme-chinese expanded" id="card-chinese">
-                <div class="card-header" onclick="toggleCard('card-chinese')">
-                    <div class="card-header-left">
-                        <div class="card-icon">📖</div>
-                        <div>
-                            <div class="card-title">语文</div>
-                        </div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <span class="card-badge tag-red">重点</span>
-                        <span class="card-toggle">▼</span>
-                    </div>
+        <!-- 语文 -->
+        <div class="card theme-chinese expanded" id="card-chinese">
+            <div class="card-header" onclick="toggleCard('card-chinese')">
+                <div class="card-header-left">
+                    <div class="card-icon">📖</div>
+                    <div class="card-title">语文</div>
                 </div>
-                <div class="card-body">
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="card-badge" style="background:#fee2e2;color:#991b1b;">重点</span>
+                    <span class="card-toggle">▼</span>
+                </div>
+            </div>
+            <div class="card-body">
+
 
                     <div class="highlight-box">
                         <strong>🌟 王熙然表现优秀：</strong>早读认真奖、眼保健操认真奖、护脊操认真奖、午餐打扫认真奖
@@ -984,24 +680,24 @@
                         🏆 今年班级总分第一名！
                     </div>
 
+                
+            </div>
+        </div>
+
+        <!-- 数学 -->
+        <div class="card theme-math" id="card-math">
+            <div class="card-header" onclick="toggleCard('card-math')">
+                <div class="card-header-left">
+                    <div class="card-icon">🔢</div>
+                    <div class="card-title">数学</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="card-badge" style="background:#dbeafe;color:#1e40af;">重点</span>
+                    <span class="card-toggle">▼</span>
                 </div>
             </div>
+            <div class="card-body">
 
-            <!-- 数学 -->
-            <div class="card theme-math" id="card-math">
-                <div class="card-header" onclick="toggleCard('card-math')">
-                    <div class="card-header-left">
-                        <div class="card-icon">🔢</div>
-                        <div>
-                            <div class="card-title">数学</div>
-                        </div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <span class="card-badge tag-blue">重点</span>
-                        <span class="card-toggle">▼</span>
-                    </div>
-                </div>
-                <div class="card-body">
 
                     <div class="highlight-box">
                         <strong>⚠️ 当前挑战：</strong>题干变长，需要加强阅读理解能力；应用题涉及人民币购物等生活场景
@@ -1079,24 +775,24 @@
                         📱 <strong><a href="https://www.zxx.edu.cn/" target="_blank" style="color:#2b6cb0;text-decoration:underline;">国家中小学智慧教育平台</a></strong> — 官方免费学习资源，点击直达 ↗
                     </div>
 
+                
+            </div>
+        </div>
+
+        <!-- 体育 -->
+        <div class="card theme-sports" id="card-sports">
+            <div class="card-header" onclick="toggleCard('card-sports')">
+                <div class="card-header-left">
+                    <div class="card-icon">🏃</div>
+                    <div class="card-title">体育</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="card-badge" style="background:#fee2e2;color:#991b1b;">重要</span>
+                    <span class="card-toggle">▼</span>
                 </div>
             </div>
+            <div class="card-body">
 
-            <!-- 体育 -->
-            <div class="card theme-sports" id="card-sports">
-                <div class="card-header" onclick="toggleCard('card-sports')">
-                    <div class="card-header-left">
-                        <div class="card-icon">🏃</div>
-                        <div>
-                            <div class="card-title">体育</div>
-                        </div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <span class="card-badge tag-red">重要</span>
-                        <span class="card-toggle">▼</span>
-                    </div>
-                </div>
-                <div class="card-body">
 
                     <div class="highlight-box">
                         <strong>🚨 健康预警：</strong>三年级以前是控制体重的关键期，肥胖和脊柱侧弯要及早干预！
@@ -1187,29 +883,29 @@
                         <div class="item-content">控制体重，合理饮食+运动</div>
                     </div>
 
-                </div>
+                
             </div>
-
         </div>
 
-        <!-- 育儿指南 -->
-        <div id="parenting" class="content-section">
+    </div>
 
-            <!-- 习惯培养 -->
-            <div class="card theme-habit expanded" id="card-habit">
-                <div class="card-header" onclick="toggleCard('card-habit')">
-                    <div class="card-header-left">
-                        <div class="card-icon">🎯</div>
-                        <div>
-                            <div class="card-title">习惯培养</div>
-                        </div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <span class="card-badge tag-purple">核心</span>
-                        <span class="card-toggle">▼</span>
-                    </div>
+    <!-- 育儿指南 -->
+    <div id="parenting" class="content-section">
+
+        <!-- 习惯培养 -->
+        <div class="card theme-habit expanded" id="card-habit">
+            <div class="card-header" onclick="toggleCard('card-habit')">
+                <div class="card-header-left">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">习惯培养</div>
                 </div>
-                <div class="card-body">
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="card-badge" style="background:#ede9fe;color:#6b21a8;">核心</span>
+                    <span class="card-toggle">▼</span>
+                </div>
+            </div>
+            <div class="card-body">
+
 
                     <div class="sub-title">📌 自理能力</div>
                     <div class="item">
@@ -1270,24 +966,24 @@
                         培养自理能力、服务意识、责任心
                     </div>
 
+                
+            </div>
+        </div>
+
+        <!-- 能力培养 -->
+        <div class="card theme-growth" id="card-growth">
+            <div class="card-header" onclick="toggleCard('card-growth')">
+                <div class="card-header-left">
+                    <div class="card-icon">🌱</div>
+                    <div class="card-title">能力培养</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="card-badge" style="background:#ede9fe;color:#6b21a8;">核心</span>
+                    <span class="card-toggle">▼</span>
                 </div>
             </div>
+            <div class="card-body">
 
-            <!-- 能力培养 -->
-            <div class="card theme-growth" id="card-growth">
-                <div class="card-header" onclick="toggleCard('card-growth')">
-                    <div class="card-header-left">
-                        <div class="card-icon">🌱</div>
-                        <div>
-                            <div class="card-title">能力培养</div>
-                        </div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <span class="card-badge tag-purple">核心</span>
-                        <span class="card-toggle">▼</span>
-                    </div>
-                </div>
-                <div class="card-body">
 
                     <div class="sub-title">📌 表达能力</div>
                     <div class="item">
@@ -1331,24 +1027,24 @@
                         <div class="item-content"><strong>悲悯情怀</strong> — 善待他人、善待动物、感恩长辈</div>
                     </div>
 
+                
+            </div>
+        </div>
+
+        <!-- 家庭关系 -->
+        <div class="card theme-family" id="card-family">
+            <div class="card-header" onclick="toggleCard('card-family')">
+                <div class="card-header-left">
+                    <div class="card-icon">💑</div>
+                    <div class="card-title">家庭关系</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="card-badge" style="background:#dcfce7;color:#166534;">重要</span>
+                    <span class="card-toggle">▼</span>
                 </div>
             </div>
+            <div class="card-body">
 
-            <!-- 家庭关系 -->
-            <div class="card theme-family" id="card-family">
-                <div class="card-header" onclick="toggleCard('card-family')">
-                    <div class="card-header-left">
-                        <div class="card-icon">💑</div>
-                        <div>
-                            <div class="card-title">家庭关系</div>
-                        </div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <span class="card-badge tag-green">重要</span>
-                        <span class="card-toggle">▼</span>
-                    </div>
-                </div>
-                <div class="card-body">
 
                     <div class="highlight-box">
                         <strong>💑 夫妻关系好，亲子关系才会好</strong><br>
@@ -1365,43 +1061,62 @@
                         <div class="item-content"><strong>不骄纵，眼中有人</strong> — 遵守规则，尊重他人</div>
                     </div>
 
-                </div>
+                
             </div>
-
-        </div>
-
-        <!-- 全部内容 -->
-        <div id="all" class="content-section">
-            <div style="text-align:center;color:white;margin-bottom:16px;font-size:14px;opacity:0.9;">
-                以下为全部内容汇总，可点击卡片展开查看
-            </div>
-            <!-- 这里会通过JS动态复制内容 -->
-            <div id="all-content-area"></div>
-        </div>
-
-        <!-- 底部按钮 -->
-        <div class="footer-actions">
-            <button class="btn btn-primary" onclick="copyAll()">
-                📋 复制全部要点
-            </button>
-            <button class="btn btn-secondary" id="expandAllBtn" onclick="toggleExpandAll()">
-                🔽 展开全部
-            </button>
         </div>
 
     </div>
 
-    <!-- 提示 toast -->
+    <!-- 全部内容 -->
+    <div id="all" class="content-section">
+        <div style="text-align:center;color:var(--text-secondary);margin-bottom:16px;font-size:13px;">
+            以下为全部内容汇总，可点击卡片展开查看
+        </div>
+        <div id="all-content-area"></div>
+    </div>
+
+    <!-- 底部按钮 -->
+    <div class="footer-actions">
+        <button class="btn btn-primary" onclick="copyAll()">
+            📋 复制全部要点
+        </button>
+        <button class="btn btn-secondary" id="expandAllBtn" onclick="toggleExpandAll()">
+            🔽 展开全部
+        </button>
+    </div>
+
+    <!-- 侧边浮动导航 -->
+    <div class="sidebar-nav">
+        <div class="menu-items" id="menuItems">
+            <button class="menu-item" onclick="jumpToSection('subjects', 'card-chinese')">📖 语文</button>
+            <button class="menu-item" onclick="jumpToSection('subjects', 'card-math')">🔢 数学</button>
+            <button class="menu-item" onclick="jumpToSection('subjects', 'card-sports')">🏃 体育</button>
+            <button class="menu-item" onclick="jumpToSection('parenting', 'card-habit')">🎯 习惯</button>
+            <button class="menu-item" onclick="jumpToSection('parenting', 'card-growth')">🌱 能力</button>
+            <button class="menu-item" onclick="jumpToSection('parenting', 'card-family')">💑 家庭</button>
+        </div>
+        <button class="menu-fab" id="menuFab" onclick="toggleMenu()">☰</button>
+    </div>
+
+    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
     <!-- 图片弹窗 -->
     <div class="image-modal" id="imageModal" onclick="closeImageModal(event)">
         <button class="image-modal-close" onclick="closeImageModal(event)">✕</button>
-        <div class="image-modal-title" id="imageModalTitle">点击任意位置关闭</div>
+        <div class="image-modal-title">点击任意位置关闭</div>
         <img src="" alt="体测标准" id="imageModalImg">
     </div>
 
     <script>
+        // 悬浮菜单切换
+        function toggleMenu() {
+            const items = document.getElementById('menuItems');
+            const fab = document.getElementById('menuFab');
+            items.classList.toggle('show');
+            fab.classList.toggle('active');
+        }
+
         // 图片弹窗功能
         function openImageModal(src) {
             const modal = document.getElementById('imageModal');
@@ -1738,6 +1453,7 @@
                 sidebar.classList.remove('mobile-collapsed');
             }
         });
+    
     </script>
 </body>
 </html>
